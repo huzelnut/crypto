@@ -1,0 +1,8 @@
+server:
+  port: ${REC_APP_SERVER_PORT:8090}
+  servlet:
+    context-path: ${REC_APP_BASE_API_URL:/api}
+
+logging:
+  file:
+    name: ${REC_APP_LOG_FILENAME:log/crypto.log}
