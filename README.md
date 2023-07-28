@@ -77,7 +77,7 @@ docker run --name crypto_backend -e REC_APP_LOG_FILENAME=log/crypto.log -v crypt
 
 ### Run tests
 
-This build uses Maven Surefire plugin to run tests. Also tests need Docker installed to run. To run tests, perform this command from repository folder:
+This build uses Maven Surefire plugin to run tests. To run tests, perform this command from repository folder:
 
 ```
 mvn test
