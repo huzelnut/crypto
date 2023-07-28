@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
-import static com.epam.crypto.util.DateTimeTestUtils.getTimeStamp;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -35,10 +34,18 @@ public class PriceServiceTest {
     private static final BigDecimal PRICE_OLDEST = new BigDecimal("10.02");
     private static final BigDecimal PRICE_NEWEST = new BigDecimal("10.03");
 
-    private static final long TIMESTAMP_FIRST = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 1, 1);
-    private static final long TIMESTAMP_SECOND = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 2, 1);
-    private static final long TIMESTAMP_THIRD = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 3, 1);
-    private static final long TIMESTAMP_FORTH = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 4, 1);
+    // Timestamp of 2022-01-01 01:01:01.0001 UTC+0
+
+    private static final long TIMESTAMP_FIRST = 1640998861001L;
+
+    // Timestamp of 2022-01-01 01:01:01.0002 UTC+0
+    private static final long TIMESTAMP_SECOND = 1640998861002L;
+
+    // Timestamp of 2022-01-01 01:01:01.0003 UTC+0
+    private static final long TIMESTAMP_THIRD = 1640998861003L;
+
+    // Timestamp of 2022-01-01 01:01:01.0004 UTC+0
+    private static final long TIMESTAMP_FORTH = 1640998861004L;
 
     private PriceService priceService;
 

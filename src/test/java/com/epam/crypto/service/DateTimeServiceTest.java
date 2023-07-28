@@ -1,10 +1,10 @@
 package com.epam.crypto.service;
 
-import org.junit.jupiter.api.Assertions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Test
 public class DateTimeServiceTest {
@@ -27,7 +27,7 @@ public class DateTimeServiceTest {
 
         // Then
         assertNotNull(timestamp);
-        assertEquals(timestamp, 1640995200L);
+        assertEquals(timestamp, 1640995200000L);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class DateTimeServiceTest {
 
         // Then
         assertNotNull(timestamp);
-        assertEquals(timestamp, 1642204800L);
+        assertEquals(timestamp, 1642204800000L);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class DateTimeServiceTest {
 
         // Then
         assertNotNull(timestamp);
-        assertEquals(timestamp, 1643673599L);
+        assertEquals(timestamp, 1643673599999L);
     }
 
     @Test
@@ -57,6 +57,6 @@ public class DateTimeServiceTest {
 
         // Then
         assertNotNull(timestamp);
-        assertEquals(timestamp, 1642291199L);
+        assertEquals(timestamp, 1642291199999L);
     }
 }

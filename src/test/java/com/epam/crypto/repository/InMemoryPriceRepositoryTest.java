@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-import static com.epam.crypto.util.DateTimeTestUtils.getTimeStamp;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Test
@@ -27,9 +26,14 @@ public class InMemoryPriceRepositoryTest {
     private static final int MONTH_NON_EXISTING = 2;
     private static final int DAY_NON_EXISTING = 2;
 
-    private static final long TIMESTAMP_FIRST = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 1, 1);
-    private static final long TIMESTAMP_SECOND = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 2, 1);
-    private static final long TIMESTAMP_THIRD = getTimeStamp(YEAR, MONTH, DAY, 1, 1, 3, 1);
+    // Timestamp of 2022-01-01 01:01:01.0001 UTC+0
+    private static final long TIMESTAMP_FIRST = 1640998861001L;
+
+    // Timestamp of 2022-01-01 01:01:01.0002 UTC+0
+    private static final long TIMESTAMP_SECOND = 1640998861002L;
+
+    // Timestamp of 2022-01-01 01:01:01.0003 UTC+0
+    private static final long TIMESTAMP_THIRD = 1640998861003L;
 
     private static final BigDecimal PRICE_FIRST = new BigDecimal(10.01);
     private static final BigDecimal PRICE_SECOND = new BigDecimal(10.02);
