@@ -3,34 +3,36 @@ package com.epam.crypto.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.*;
 
 @Configuration
-public class PriceMemoryConfig {
+public class PriceStorageConfig {
 
-    private final static String DATA_FOLDER_PATH = "C:\\Users\\Andrey Work\\IdeaProjects\\crypto\\src\\main\\resources\\prices";
+    private final static String DATA_FOLDER_PATH = "prices";
     private final static String CSV_DELIMITER = ",";
 
     @Bean(name = "priceStorage")
     public Map<String, NavigableMap<Long, BigDecimal>> initPriceStorage() throws IOException {
         var storage = new HashMap<String, NavigableMap<Long, BigDecimal>>();
-        File folder = new File(DATA_FOLDER_PATH);
-        for (File file : folder.listFiles()) {
-            readCsvFile(file).forEach(line -> processCsvLine(line, storage));
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = resolver.getResources("classpath:" + DATA_FOLDER_PATH + "/*.csv");
+        for (Resource resource : resources) {
+            readCsvFile(resource).forEach(line -> processCsvLine(line, storage));
         }
         return storage;
     }
 
-    private List<String> readCsvFile(File csvFile) throws IOException {
+    private List<String> readCsvFile(Resource csvFile) throws IOException {
         List<String> result = new LinkedList<>();
         boolean firstLineSkipped = false;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(csvFile.getInputStream()))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (firstLineSkipped) {

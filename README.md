@@ -124,3 +124,4 @@ http://localhost:8090/api/swagger-ui/index.html
 + for InMemoryPriceRepository: optimize getting highest/lowest prices operations (e.g. implement indexes for price field)
 + implement exception handling (and re-throw exceptions to HTTP responses in a single style)
 + add database integration for storing currencies prices
++ implement comfortable data providing (for now it's only possible to build jar with files) 
